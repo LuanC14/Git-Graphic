@@ -11,6 +11,20 @@ body {
     background: linear-gradient(90deg, rgb(67, 11, 70) 47%, rgb(193, 60, 237) 100%);
 }
 
+.add-user {
+    position: absolute;
+    top: 432px;
+    margin-left: 15px;
+}
+
+.add-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    font-size: 28px;
+}
+
 #graphic-component {
   margin: 70px auto;
   width: 900px;
@@ -31,7 +45,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  gap: 55px;
+  gap: 40px;
   justify-content: end;
   align-items: flex-end;
   padding-right: 14px;
@@ -40,7 +54,6 @@ body {
 .scale-y p:last-child {
     margin-bottom:70px;
 }
-
 .area-graphic {
     display: flex;
     flex-direction: column;
@@ -49,7 +62,8 @@ body {
     padding: 10px 10px 0 0;
 }
 
-.markeup1, .markeup2, .markeup3, .markeup4 {
+/*Marcação de traços cinzas no gráfico, referentes as quantidades da escala Y*/
+.markeup1, .markeup2, .markeup3, .markeup4, .markeup5 {
     position: absolute;
     border-bottom: 1px solid rgba(0, 0, 0, 0.141);
     width: 780px;
@@ -62,60 +76,59 @@ body {
 }
 
 .markeup2 {
-    top: 185px;
+    top: 170px;
 }
 
 .markeup3 {
-    top: 260px;
+    top: 230px;
 }
 
 .markeup4 {
-    top: 330px;
+    top: 285px;
+}
+
+.markeup5 {
+    top: 350px
 }
 
 .bars {
-
     display: flex;
     background-color: rgba(23,1,23,0.1);
     box-shadow: -1px -2px 15px 1px rgba(0,0,0,0.25);    
     align-items: flex-end;
     height: 100%;
     gap: 28px;
+    padding-left: 12px;
 }
 
 .data-list {
     display: flex;
     align-items: flex-end;
     gap: 8px;
-    height: 100px;
+    max-height:304px;
     padding: 4px 4px 0 4px;
 }
 
-.data-list:first-child {
-    margin-left: 18px;
-}
-
 .data-list li {
-    background: #ffbdff;
     width: 18px;
-    height: 100%;
-
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
 }
 
-.data-list li:first-child {
+.repo-bar {
     background: #be8aff;
+}
+
+.follower-bar {
+    background: #ffbdff;
 }
 
 .scale-x {
     display: flex;
     gap: 32px;
-}
-
-.profile-list:first-child {
-    margin-left: 12px;
+    min-height: 75px;
+    padding-left: 12px;
 }
 
 .profile-list li {
