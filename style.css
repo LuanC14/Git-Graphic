@@ -11,13 +11,22 @@ body {
     background: linear-gradient(90deg, rgb(67, 11, 70) 47%, rgb(193, 60, 237) 100%);
 }
 
+#graphic-component {
+    margin: 70px auto;
+    width: 900px;
+    background-color: #f2f2f2;
+    box-shadow: 0px 6px 19px -8px rgba(23,1,23,1);
+    padding: 16px;
+    border-radius: 6px;
+  }
+
 .add-user {
     position: absolute;
     top: 432px;
     margin-left: 15px;
 }
 
-.add-button {
+.add-user .add-button {
     background: none;
     border: none;
     cursor: pointer;
@@ -25,24 +34,13 @@ body {
     font-size: 28px;
 }
 
-#graphic-component {
-  margin: 70px auto;
-  width: 900px;
-
-  background-color: #f2f2f2;
-  box-shadow: 0px 6px 19px -8px rgba(23,1,23,1);
-  padding: 16px;
-  border-radius: 6px;
-}
-
 .columns {
   display: flex;
 }
 
-.scale-y {
+.columns .scale-y {
   height: 400px;
   width: 50px;
-
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -54,41 +52,12 @@ body {
 .scale-y p:last-child {
     margin-bottom:70px;
 }
-.area-graphic {
+.columns .area-graphic {
     display: flex;
     flex-direction: column;
     justify-content: end;
     width: 100%;
     padding: 10px 10px 0 0;
-}
-
-/*Marcação de traços cinzas no gráfico, referentes as quantidades da escala Y*/
-.markeup1, .markeup2, .markeup3, .markeup4, .markeup5 {
-    position: absolute;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.141);
-    width: 780px;
-    margin-left: 10px;    
-
-}
-
-.markeup1 {
-    top: 110px;
-}
-
-.markeup2 {
-    top: 170px;
-}
-
-.markeup3 {
-    top: 230px;
-}
-
-.markeup4 {
-    top: 285px;
-}
-
-.markeup5 {
-    top: 350px
 }
 
 .bars {
@@ -101,6 +70,7 @@ body {
     padding-left: 12px;
 }
 
+/*Criada via Javascript e inseridas na DIV Bars*/
 .data-list {
     display: flex;
     align-items: flex-end;
@@ -123,12 +93,22 @@ body {
 .follower-bar {
     background: #ffbdff;
 }
-
 .scale-x {
     display: flex;
     gap: 32px;
     min-height: 75px;
     padding-left: 12px;
+}
+
+/*Criada via Javascript e inseridas na DIV scale-X*/
+.delete-button {
+    background: none;
+    border: none;
+    position: absolute;
+    font-size: 8px;
+    margin-bottom: 45px;
+    margin-right: 35px;
+    cursor: pointer;
 }
 
 .profile-list li {
@@ -153,4 +133,60 @@ body {
     font-size: 12px;
     max-width: 50px;
     overflow: hidden;
+}
+
+.about-button {
+    width: 50px;
+    margin-left: 855px;
+}
+
+.about-button button {
+    position: absolute;
+    z-index: 2;
+    margin-top: 73px;
+    top: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.about-button img {
+    opacity: 0.3;
+    width: 30px;
+}
+
+.description {
+    position: absolute;
+    font-size: 9px;
+    margin-bottom: 65px;
+}
+
+/*Marcação de traços cinzas no gráfico, referentes as quantidades da escala Y*/
+.markeup1, .markeup2, .markeup3, .markeup4, .markeup5 {
+    position: absolute;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.141);
+    width: 780px;
+    margin-left: 10px;    
+}
+.markeup1 {
+    top: 110px;
+}
+.markeup2 {
+    top: 170px;
+}
+.markeup3 {
+    top: 230px;
+}
+.markeup4 {
+    top: 285px;
+}
+.markeup5 {
+    top: 350px
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
 }

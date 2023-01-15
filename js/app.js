@@ -17,36 +17,44 @@ class dataUser {
     }
 
     async add(username) {
-        this.userData = await GithubUsers.search(username)
+        try{
+            const newUser = await GithubUsers.search(username)
+            const userExists = this.users.find(user => user.login == newUser.login )
 
-        if (this.userData.login === undefined || null) {
-            return alert("Usuário não encontrado")
+            if (newUser.login === undefined || null) {
+                throw new Error("Usuário não encontrado")
+            }
+            if(userExists) {
+                throw new Error("O usuário já está presente na lista")
+            }
+    
+            this.users = [...this.users, newUser]
+            this.updateRoot()
+            this.save()
         }
-
-        this.users = [...this.users, this.userData]
-        this.updateRoot()
-        this.save()
+        catch(error){
+            alert(error.message)
+        }
     }
 
     onAdd() {
         const addButton = this.root.querySelector('.add-user .add-button')
-
         addButton.onclick = () => {
 
             if (this.users.length >= 10) {
                 return alert("Apenas 10 usuários permitidos")
             }
-
             const user = prompt("Digite o username do Github")
+            if(user == null || undefined) return
             this.add(user)
         }
     }
 
     delete(user) {
         const filteredUser = this.users
-            .filter(entry => entry.name != user.name)
+            .filter(entry => entry.login != user.login)
         this.users = filteredUser
-        this.update()
+        this.updateRoot()
         this.save()
     }
 }
@@ -67,18 +75,19 @@ export class appUpdate extends dataUser {
 
             profile.querySelector('li img').src = `https://github.com/${user.login}.png`
             profile.querySelector('li p').textContent = user.login
+            profile.querySelector('.delete-button').onclick = () => {
+                this.delete(user)
+            }
 
             handleHeightBars.handleBarRepo(user.public_repos, bars)
             handleHeightBars.handleBarFollow(user.followers, bars)
-
             barsGraphic.append(bars)
             profilesList.append(profile)
         })
     }
-    
+
     addBars() {
         const ulBar = document.createElement('ul')
-
         ulBar.innerHTML = `
         <ul class="data-list">
         <li class="repo-bar"></li>
@@ -88,12 +97,16 @@ export class appUpdate extends dataUser {
         return ulBar
     }
 
-
     addProfile() {
         const ulUser = document.createElement('ul')
         ulUser.innerHTML = `
         <ul class="profile-list">
                 <li>
+                <div class="description">
+                <span>Repo</span>
+                <span>Followers</span>
+                </div>
+                    <button class="delete-button">❌</button>
                     <img src="https://github.com/igorttosta.png" alt="">
                     <p>Igorttosta</p>
                 </li>
@@ -108,7 +121,7 @@ export class appUpdate extends dataUser {
         ulNodeBars.forEach((ul) => {
             ul.remove()
         })
-
+        
         ulNodeProfile.forEach((ul) => {
             ul.remove()
         })
